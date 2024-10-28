@@ -1,3 +1,13 @@
+
+/*
+ * Este código utiliza o algoritmo AES (Advanced Encryption Standard) com chave de 128 bits e o modo de operação CBC (Cipher Block Chaining).
+ * AES é amplamente utilizado em segurança da informação para criptografar dados sensíveis com alta eficiência e segurança.
+ * No modo CBC, cada bloco de texto claro é XOR com o bloco de texto cifrado anterior, aumentando a segurança contra ataques de repetição.
+ * Neste exemplo, a biblioteca `crypto` do Node.js é usada para criptografar e descriptografar uma mensagem com uma chave e um vetor de inicialização (IV) aleatórios.
+ * O código oferece uma implementação prática de AES-128-CBC para cifrar e decifrar textos.
+ */
+
+
 const crypto = require('crypto');
 
 // função para criptografar o texto com AES-128-CBC
