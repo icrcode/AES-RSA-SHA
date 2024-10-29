@@ -8,11 +8,9 @@ function gcd(a, h) {
     }
   }
   
-
   let p = 3;
   let q = 7;
   
-
   let n = p * q;
 
   let e = 2;
