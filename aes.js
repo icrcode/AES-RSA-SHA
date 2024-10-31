@@ -1,32 +1,19 @@
-const crypto = require('crypto');
-
-// função para criptografar o texto com AES-128-CBC
-function encryptAES(text, key, iv) {
-  const cipher = crypto.createCipheriv('aes-128-cbc', key, iv);
-  let encrypted = cipher.update(text, 'utf8', 'hex');
-  encrypted += cipher.final('hex');
-  return encrypted;
+function xor(a, b) {
+  return a ^ b;
 }
 
-// função para descriptografar o texto com AES-128-CBC
-function decryptAES(encryptedText, key, iv) {
-  const decipher = crypto.createDecipheriv('aes-128-cbc', key, iv);
-  let decrypted = decipher.update(encryptedText, 'hex', 'utf8');
-  decrypted += decipher.final('utf8');
-  return decrypted;
+function addRoundKey(state, roundKey) {
+  for (let i = 0; i < state.length; i++) {
+      state[i] = xor(state[i], roundKey[i]);
+  }
+  return state;
 }
 
-// utilizando
-const key = crypto.randomBytes(16);
-const iv = crypto.randomBytes(16);  
+let key = [0x2b, 0x7e, 0x15, 0x16, 0x28, 0xae, 0xd2, 0xa6, 0xab, 0xf7, 0xcf, 0x9f, 0x92, 0x4f, 0x82, 0x8b];
+let state = [0x32, 0x88, 0x31, 0xe0, 0x43, 0x5a, 0x31, 0x37, 0xf6, 0x30, 0x98, 0x07, 0xa8, 0x8d, 0xa2, 0x34];
 
-const text = "O texto deve";
-console.log("Texto original:", text);
+let roundKey = key.slice(0, 16); 
 
-// para criptografar
-const encryptedText = encryptAES(text, key, iv);
-console.log("Texto criptografado:", encryptedText);
+state = addRoundKey(state, roundKey);
 
-// para descriptografar
-const decryptedText = decryptAES(encryptedText, key, iv);
-console.log("Texto descriptografado:", decryptedText);
+console.log('State after AddRoundKey:', state);

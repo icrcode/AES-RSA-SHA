@@ -22,7 +22,7 @@ function gcd(a, h) {
   let k = 2; //
   let d = (1 + (k * phi)) / e;
   
-  let msg = 12;
+  let msg = 120;
   
   console.log("Message data = " + msg);
   
@@ -33,4 +33,3 @@ function gcd(a, h) {
   let m = Math.pow(c, d);
   m = m % n;
   console.log("Original Message Sent = " + m);
-  
