@@ -142,3 +142,6 @@ function rotr(n, x) {
 console.log(SHA("Texto exemplo 1"));
 console.log(SHA("Texto exemplo 2"));
 console.log(SHA("Texto exemplo 3"));
+
+
+
